@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <WebViewer :path="`${path}lib`" :urlpath="pdfurl"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import WebViewer from './components/WebViewer.vue'
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld
-  }
-}
+    WebViewer
+  },
+  setup() {
+    const path = process.env.BASE_URL;
+    return { path };
+  },
+  inject: ["pdfurl"],
+};
 </script>
 
 <style>
+html,body{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
