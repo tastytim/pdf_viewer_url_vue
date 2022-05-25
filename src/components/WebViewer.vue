@@ -1,6 +1,5 @@
 <template>
   <div ref="viewer"></div>
-  <iframe :src="urlpath"></iframe>
 </template>
 
 <script>
@@ -23,7 +22,7 @@ export default {
       this.$refs.viewer
     ).then((instance) => {
       // now you can access APIs through the WebViewer instance
-    
+      instance.loadDocument(this.urlpath)
       const { Core, UI } = instance;
       instance.UI.setTheme('dark');
 
